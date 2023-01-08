@@ -11,10 +11,14 @@
     /* Source Map Options */
     /* Experimental Options */
     /* Advanced Options */
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "skipLibCheck": true
   },
   "exclude": [
-    "./dist",
-    "./node_modules"
-  ]
+    "./dist/*",
+    "./node_modules/*",
+    "./tests/*"
+  ], 
+  "include": ["./src"]
 }

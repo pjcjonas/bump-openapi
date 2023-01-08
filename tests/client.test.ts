@@ -2,7 +2,7 @@ import jestOpenApi from "jest-openapi";
 import { ItemSchema, NewItemSchema } from "openapi-client-ts";
 import path from 'path'
 import request from "supertest"
-import { app } from "./mock-server/server";
+import { app } from "../src/server";
 
 jestOpenApi(path.join(__dirname, "../openapi.yaml"));
 
