@@ -1,0 +1,7 @@
+global:
+  apiName: OpenAPI Code generator example
+  apiDescription: A description of my API
+  apiVersion: 1.0.0
+  basePackage: com.example
+  generateModelTests: true
+  generateModelDocumentation: true

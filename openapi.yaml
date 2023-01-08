@@ -1,0 +1,129 @@
+openapi: 3.0.0
+info:
+  title: OpenAPI Specification for the Item CRUD API
+  version: 1.0.0
+
+paths:
+  /items:
+    get:
+      summary: List all items
+      operationId: listItems
+      responses:
+        '200':
+          description: Successful response
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ItemList'
+    post:
+      summary: Create a new item
+      operationId: createItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewItemSchema'
+      responses:
+        '201':
+          description: The newly created item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemSchema'
+  /items/{itemId}:
+    get:
+      summary: Get an item by ID
+      operationId: getItem
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The item with the specified ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemSchema'
+        '404':
+          description: Item not found
+    put:
+      summary: Update an item
+      operationId: updateItem
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewItemSchema'
+      responses:
+        '200':
+          description: The updated item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewItemSchema'
+        '404':
+          description: Item not found
+    delete:
+      summary: Delete an item
+      operationId: deleteItem
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: The item was deleted successfully
+        '404':
+          description: Item not found
+
+components:
+  schemas:
+  
+    ItemList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ItemSchema'
+    
+    ItemSchema:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          description: The ID of the item
+        name:
+          type: string
+          description: The name of the item
+        description:
+          type: string
+          description: A description of the item
+    
+    NewItemSchema:
+      type: object
+      required:
+        - name
+        - description
+      properties:
+        id:
+          type: string
+          description: The ID of the item
+        name:
+          type: string
+          description: The name of the item
+        description:
+          type: string
+          description: A description of the item
