@@ -50,25 +50,6 @@ paths:
                 $ref: '#/components/schemas/ItemSchema'
         '404':
           description: Item not found
-  /items/{itemId}/deadline:
-    get:
-      summary: Get an item by ID and its deadline
-      operationId: getItemDeadline
-      parameters:
-        - name: itemId
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: The item with the specified ID's deadline
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ItemSchemaDeadline'
-        '404':
-          description: Item not found
     put:
       summary: Update an item
       operationId: updateItem
@@ -91,6 +72,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NewItemSchema'
+        '404':
+          description: Item not found
+  /items/{itemId}/deadline:
+    get:
+      summary: Get an item by ID and its deadline
+      operationId: getItemDeadline
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The item with the specified ID's deadline
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemSchemaDeadline'
         '404':
           description: Item not found
     delete:
